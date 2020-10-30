@@ -1,0 +1,34 @@
+image: atlassian/default-image:2
+
+pipelines:
+    branches:
+        master:
+            -   step:
+                    name: Mirror to Github
+                    script:
+                        - git remote add github git@github.com:HEPTACOM/HeptacomShopwarePlatformAdministrationWithoutPluginManager.git
+                        - git push --force github master
+    tags:
+        '*':
+            -   step:
+                    name: Mirror tags to Github
+                    script:
+                        - git remote add github git@github.com:HEPTACOM/HeptacomShopwarePlatformAdministrationWithoutPluginManager.git
+                        - git push --force github tag $BITBUCKET_TAG
+    pull-requests:
+        '**':
+            -   step:
+                    name: Lint php
+                    image: heptacom/shopware-5-pipeline:php72-latest
+                    caches:
+                        - composer
+                    artifacts:
+                        - vendor/**
+                        - composer.lock
+                    script:
+                        - make cs
+            -   step:
+                    name: Lint plugins store readiness
+                    image: heptacom/shopware-5-pipeline:php72-latest
+                    script:
+                        - make releasecheck

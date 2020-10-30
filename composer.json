@@ -1,0 +1,69 @@
+{
+    "name": "heptacom/shopware-platform-administration-without-plugin-manager",
+    "type": "shopware-platform-plugin",
+    "description": "Shopware plugin that prohibits plugin manager changes in the administration to prevent plugin.zip installation bugs",
+    "keywords": [
+        "ecommerce",
+        "shopware",
+        "shopware-platform",
+        "administration"
+    ],
+    "version": "1.0.0",
+    "license": "AGPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "HEPTACOM GmbH",
+            "role": "Manufacturer"
+        },
+        {
+            "name": "Joshua Behrens",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">= 7.2",
+        "shopware/administration": ">=6.2 <6.4",
+        "shopware/core": ">=6.2 <6.4"
+    },
+    "conflict": {
+        "nikic/php-parser": "4.7.0"
+    },
+    "require-dev": {
+        "dq5studios/psalm-junit": "^2.0",
+        "ergebnis/composer-normalize": ">=2.7",
+        "friendsofphp/php-cs-fixer": ">=2",
+        "icanhazstring/composer-unused": ">=0.7",
+        "maglnet/composer-require-checker": ">=2",
+        "mavimo/phpstan-junit": "^0.3.0",
+        "phpstan/extension-installer": ">=1",
+        "phpstan/phpstan": ">=0.12",
+        "phpstan/phpstan-deprecation-rules": ">=0.12",
+        "phpstan/phpstan-phpunit": ">=0.12",
+        "phpstan/phpstan-strict-rules": ">=0.12",
+        "vimeo/psalm": ">=3"
+    },
+    "extra": {
+        "description": {
+            "de-DE": "Unterbindet die Nutzung des Pluginmanagers in der Administration",
+            "en-GB": "Disables the actions of the plugin manager in the administration"
+        },
+        "label": {
+            "de-DE": "Limitierter Pluginmanager in der Administration",
+            "en-GB": "Limited plugin manager for administration"
+        },
+        "manufacturerLink": {
+            "de-DE": "https://www.heptacom.de/",
+            "en-GB": "https://www.heptacom.de/"
+        },
+        "shopware-plugin-class": "Heptacom\\Shopware\\Administration\\WithoutPluginManager\\HeptacomAdministrationWithoutPluginManager",
+        "supportLink": {
+            "de-DE": "https://www.heptacom.de/kontakt/",
+            "en-GB": "https://www.heptacom.de/kontakt/"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Heptacom\\Shopware\\Administration\\WithoutPluginManager\\": "src/"
+        }
+    }
+}
