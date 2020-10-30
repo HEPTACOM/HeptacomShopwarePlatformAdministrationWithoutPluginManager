@@ -1,0 +1,9 @@
+{
+    "heptacom": {
+        "administration-without-plugin-manager": {
+            "plugin-list": {
+                "helpText": "Dieses Shopsystem wird von einer Agentur oder einem Dienstleister administriert. Nehmen Sie Kontakt auf, wenn es um eine Installation, eines Updates, eine Aktivierung, eine Deaktivierung oder Löschung eines Plugins geht."
+            }
+        }
+    }
+}

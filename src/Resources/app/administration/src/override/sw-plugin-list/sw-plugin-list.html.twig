@@ -1,0 +1,26 @@
+{% block sw_plugin_list_grid_columns_activated_label %}
+    <template
+        v-if="item.active"
+    >
+        <sw-color-badge
+            class="sw-plugin-list-grid-columns-activated-label"
+            variant="info"
+            rounded
+        ></sw-color-badge>
+        {{ $tc('sw-plugin.list.activated') }}
+    </template>
+    <template
+        v-else
+    >
+        <sw-color-badge
+            class="sw-plugin-list-grid-columns-activated-label"
+            rounded
+        ></sw-color-badge>
+        {{ $tc('sw-plugin.list.deactivated') }}
+    </template>
+{% endblock %}
+
+{% block sw_plugin_list_grid_columns_actions_install %}{% endblock %}
+{% block sw_plugin_list_grid_columns_actions_uninstall %}{% endblock %}
+{% block sw_plugin_list_grid_columns_actions_update %}{% endblock %}
+{% block sw_plugin_list_grid_columns_actions_delete %}{% endblock %}

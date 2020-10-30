@@ -1,0 +1,45 @@
+{
+    "private": true,
+    "contributors": [
+        {
+            "name": "Joshua Behrens",
+            "email": "behrens@heptacom.de"
+        }
+    ],
+    "scripts": {
+        "lint:js": "eslint --ext .js,.vue src",
+        "lint:js:ci": "eslint --format junit --ext .js,.vue src > ../../../../test-results/eslint-admin.xml",
+        "lint:js:fix": "eslint --fix --ext .js,.vue src",
+        "lint:scss": "stylelint '**/*.scss'",
+        "lint:scss:ci": "stylelint '**/*.scss' --custom-formatter 'node_modules/stylelint-junit-formatter' > ../../../../test-results/stylelint-admin.xml",
+        "lint:scss:fix": "stylelint '**/*.scss' --fix"
+    },
+    "devDependencies": {
+        "@shopware-ag/eslint-config-base": "1.0.0",
+        "@shopware-ag/jest-preset-sw6-admin": "1.1.1",
+        "babel-eslint": "10.1.0",
+        "eslint": "5.16.0",
+        "eslint-config-airbnb-base": "13.2.0",
+        "eslint-import-resolver-webpack": "0.11.1",
+        "eslint-loader": "2.2.1",
+        "eslint-plugin-html": "6.0.0",
+        "eslint-plugin-import": "2.18.2",
+        "eslint-plugin-jest": "24.0.2",
+        "eslint-plugin-promise": "4.2.1",
+        "inject-loader": "4.0.1",
+        "sass-loader": "7.1.0",
+        "stylelint": "10.1.0",
+        "stylelint-config-standard": "18.3.0",
+        "stylelint-junit-formatter": "^0.2.2",
+        "stylelint-scss": "3.9.2",
+        "stylelint-webpack-plugin": "0.10.5"
+    },
+    "engines": {
+        "node": ">=6.14.0 || >=8.10.0 || >=9.10.0",
+        "npm": ">= 6.5.0"
+    },
+    "browserslist": [
+        "last 2 versions",
+        "safari >= 7"
+    ]
+}

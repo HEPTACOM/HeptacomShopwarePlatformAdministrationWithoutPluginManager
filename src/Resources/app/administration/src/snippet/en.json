@@ -1,0 +1,9 @@
+{
+    "heptacom": {
+        "administration-without-plugin-manager": {
+            "plugin-list": {
+                "helpText": "Your shop system is administered by your agency or service provider. Contact them for when you are looking for a plugin installation, update, activation, deactivation or deletion."
+            }
+        }
+    }
+}

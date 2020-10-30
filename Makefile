@@ -25,7 +25,7 @@ releasecheck: frosh-plugin-upload
 	.build/frosh-plugin-upload plugin:validate $(shell pwd)/.build/store-build/*.zip
 
 .PHONY: cs
-cs: cs-fixer-dry-run cs-phpstan cs-psalm cs-soft-require cs-composer-unused cs-composer-normalize cs-json
+cs: cs-fixer-dry-run cs-phpstan cs-psalm cs-soft-require cs-composer-unused cs-composer-normalize cs-json cs-admin-js cs-admin-style
 
 .PHONY: cs-fixer-dry-run
 cs-fixer-dry-run: vendor .build test-results
@@ -54,6 +54,14 @@ cs-composer-normalize: vendor
 .PHONY: cs-json
 cs-json: $(JSON_FILES)
 
+.PHONY: cs-admin-js
+cs-admin-js: admin-npm
+	npm run --prefix src/Resources/app/administration lint:js:ci
+
+.PHONY: cs-admin-style
+cs-admin-style: admin-npm
+	npm run --prefix src/Resources/app/administration lint:scss:ci
+
 .PHONY: $(JSON_FILES)
 $(JSON_FILES):
 	$(JQ) . "$@"
@@ -63,12 +71,24 @@ cs-fix-composer-normalize: vendor
 	$(COMPOSER) normalize --diff composer.json
 
 .PHONY: csfix
-csfix: vendor .build
+csfix: vendor .build cs-admin-js-fix cs-admin-style-fix
 	$(PHP) vendor/bin/php-cs-fixer fix --config=dev-ops/php_cs.php --diff --verbose
+
+.PHONY: cs-admin-js-fix
+cs-admin-js-fix: admin-npm
+	npm run --prefix src/Resources/app/administration lint:js:fix
+
+.PHONY: cs-admin-style-fix
+cs-admin-style-fix: admin-npm
+	npm run --prefix src/Resources/app/administration lint:scss:fix
 
 .PHONY: composer-update
 composer-update:
 	$(COMPOSER) update
+
+.PHONY: admin-npm
+admin-npm:
+	npm ci --prefix src/Resources/app/administration
 
 .PHONY: frosh-plugin-upload
 frosh-plugin-upload: .build
